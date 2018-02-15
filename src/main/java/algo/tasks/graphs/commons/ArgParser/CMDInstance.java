@@ -11,6 +11,9 @@ public class CMDInstance {
     public CMDInstance(Options options, String[] args) throws ParseException, FileNotFoundException {
         CommandLineParser parser = new DefaultParser();
         CommandLine line = parser.parse(options, args);
+        if (line.hasOption("help")){
+            help(options);
+        }
         if (line.hasOption("input")){
             inputStream = new FileInputStream(line.getOptionValue("input"));
         } else {
@@ -21,6 +24,13 @@ public class CMDInstance {
         } else {
             outputStream = System.out;
         }
+    }
+
+    private void help(Options options){
+        HelpFormatter formatter = new HelpFormatter();
+
+        formatter.printHelp("Solver", options);
+        System.exit(0);
     }
 
     public InputStream getInputStream() {

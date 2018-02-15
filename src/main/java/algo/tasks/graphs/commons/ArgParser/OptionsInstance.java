@@ -10,6 +10,7 @@ public class OptionsInstance {
         options = new Options();
         options.addOption("i", "input", true, "Input file");
         options.addOption("o", "output", true, "Output file");
+        options.addOption("h", "help", false, "Print help");
     }
 
     public Options getOptions(){
